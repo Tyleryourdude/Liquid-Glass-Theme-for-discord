@@ -1,77 +1,83 @@
-/* Overall background: dark with a blue-glass overlay */
+/* Set overall background to a soft gradient for depth */
 body {
-  background-color: #0d0d0d !important;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 
-/* Main container with glass-like, semi-transparent appearance */
+/* Main Discord container with a transparent, glassy look */
 #app-mount {
-  background: linear-gradient(135deg, #1f3c4b, #2a5298);
-  border-radius: 20px !important;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 0 30px rgba(0,255,255,0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 40px rgba(0,0,0,0.3);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transition: all 0.4s ease !important;
+  margin: 20px;
+  padding: 20px;
+  transition: all 0.4s ease;
 }
 
-/* Sidebar, server list, and channel list: semi-transparent with glow */
+/* Sidebar and server list with semi-transparent, glass effect */
 .guildsWrapper, .sidebar-2K8pF4, .channels-2XN2pA {
-  background-color: rgba(255,255,255,0.02);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
+  transition: all 0.3s;
 }
 .guildsWrapper:hover, .sidebar-2K8pF4:hover, .channels-2XN2pA:hover {
-  background-color: rgba(255,255,255,0.04);
-  box-shadow: inset 0 0 15px rgba(0,255,255,0.2);
+  background-color: rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.15);
 }
 
-/* Channel and server labels with glass and gradient effect */
+/* Channel and server labels, with layered glass look */
 .channelName-2S1rOw, .guildName-3zU2dV, .categoryDefault-3d7XoX {
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+  background: rgba(255,255,255,0.1);
   padding: 4px 8px;
-  border-radius: 8px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font-weight: 600;
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   color: #fff;
+  font-weight: 600;
   transition: background 0.3s;
 }
 .channelName-2S1rOw:hover, .guildName-3zU2dV:hover, .categoryDefault-3d7XoX:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  background: rgba(255,255,255,0.15);
 }
 
-/* Messages with glassy, liquid effect */
+/* Message bubbles with layered glass and subtle glow */
 .message-2FBp4y {
-  background-color: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
   transition: all 0.3s;
 }
 .message-2FBp4y:hover {
-  background-color: rgba(255,255,255,0.05);
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
 }
 
-/* Input fields, search, textarea, buttons: sleek glass with soft blue tint */
+/* Input fields and buttons with glossy glass effect */
 input[type="text"], input[type="search"], textarea, button {
-  background-color: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 20px;
   padding: 10px 16px;
-  font-family: 'Arial', sans-serif;
   font-size: 14px;
   color: #fff;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s;
 }
+
 input[type="text"]:focus,
 input[type="search"]:focus,
 textarea:focus,
@@ -80,20 +86,18 @@ input[type="text"]:active,
 input[type="search"]:active,
 button:active,
 textarea:active {
-  box-shadow: 0 0 40px rgba(0,255,255,0.4),
-              inset 0 0 20px rgba(0,255,255,0.2);
-  border-color: rgba(0,255,255,0.4);
-  background-color: rgba(255,255,255,0.07);
-  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.4), inset 0 0 20px rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
 }
 
-/* Buttons with glow and ripple effect */
+/* Ripple effect on buttons for a liquid feel */
 button:active {
   transform: scale(0.97);
-  box-shadow: inset 0 0 15px rgba(0,255,255,0.5);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.4);
 }
 
-/* Custom scrollbar for a clean, glassy look */
+/* Scrollbar styling for sleekness */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -105,26 +109,26 @@ button:active {
   background-color: rgba(255,255,255,0.4);
 }
 
-/* Profile pictures and avatars with soft glow effect */
+/* Glow effect on avatars and icons to mimic liquid reflecting light */
 .avatar-3F3WWw {
-  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
   border-radius: 50%;
   transition: box-shadow 0.3s;
 }
 .avatar-3F3WWw:hover {
-  box-shadow: 0 0 25px rgba(0,255,255,0.5);
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
 }
 
-/* Server icons with glowing effect on hover */
+/* Hover glow for server icons with layered glass effect */
 .guildIcon-3X7u6C {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .guildIcon-3X7u6C:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,255,255,0.4);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
-/* Text and timestamp styles with subtle glow */
+/* Time stamps, usernames, with subtle reflective glow */
 .content-2cRqcS {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -137,17 +141,12 @@ button:active {
   color: rgba(255,255,255,0.6);
 }
 
-/* Hover glow for links and interactive elements */
-a:hover, .interactive-1gCjV0 {
-  box-shadow: 0 0 15px rgba(0,255,255,0.4);
-}
-
-/* Animate flowing liquid glass effect subtly in the background */
+/* Add some animated flow for a dynamic glass effect */
 @keyframes flow {
   0% { backdrop-filter: blur(20px); }
-  50% { backdrop-filter: blur(22px); }
+  50% { backdrop-filter: blur(25px); }
   100% { backdrop-filter: blur(20px); }
 }
 #app-mount {
-  animation: flow 12s infinite alternate ease-in-out;
+  animation: flow 15s infinite alternate ease-in-out;
 }
