@@ -1,87 +1,138 @@
-/* Set overall background transparent for seamless glass look */
+/* Set the entire background to a vibrant blue, transparent for glass effect */
 body {
-  background: transparent !important;
+  background-color: transparent !important;
 }
 
-/* Main container with ultra-glossy, distorted liquid glass effect */
+/* Main app container with animated flowing liquid glass effect */
 #app-mount {
-  background: rgba(255,255,255,0.02);
+  background: rgba(30, 144, 255, 0.1); /* Light blue transparent overlay */
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.1), 0 0 40px rgba(255,255,255,0.2);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  /* Remove any animation to stop movement */
-  animation: none !important;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  /* Animate layered distortion for liquid flow */
+  animation: flowLayers 25s infinite ease-in-out;
   transition: all 0.3s ease;
 }
 
-/* Apply a liquid distortion effect with CSS filters & mask for all major elements */
-
-@keyframes liquid-distort {
+/* Create layered animated distortions for a flowing liquid glass effect */
+@keyframes flowLayers {
   0% {
-    backdrop-filter: blur(20px) contrast(1) hue-rotate(0deg);
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
+  }
+  25% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
   }
   50% {
-    backdrop-filter: blur(25px) contrast(1.2) hue-rotate(10deg);
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(10deg);
+  }
+  75% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
   }
   100% {
-    backdrop-filter: blur(20px) contrast(1) hue-rotate(0deg);
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
   }
 }
 
-/* Make the entire interface have a distorted liquid effect */
-#app-mount {
-  animation: liquid-distort 15s infinite alternate;
+/* Layered overlays to simulate liquid distortion */
+#app-mount::before,
+#app-mount::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  mix-blend-mode: overlay;
+  border-radius: 20px;
+  animation: flowOverlay 30s infinite alternate ease-in-out;
 }
 
-/* Style for sidebar, channels, and server list with transparent glass effect */
-.guildsWrapper, .sidebar-2K8pF4, .channels-2XN2pA {
-  background-color: rgba(255,255,255,0.01);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
-  transition: background 0.3s;
+#app-mount::after {
+  background: linear-gradient(225deg, rgba(255,255,255,0.1), transparent);
+  animation-delay: 15s;
 }
-.guildsWrapper:hover, .sidebar-2K8pF4:hover, .channels-2XN2pA:hover {
+
+@keyframes flowOverlay {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(10px, -10px);
+  }
+}
+
+/* Sidebar, channels, and categories with transparent, glassy effects and animated flow */
+.guildsWrapper,
+.sidebar-2K8pF4,
+.channels-2XN2pA {
   background-color: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  transition: all 0.3s;
+}
+.guildsWrapper:hover,
+.sidebar-2K8pF4:hover,
+.channels-2XN2pA:hover {
+  background-color: rgba(255,255,255,0.03);
   box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
 }
 
-/* Labels like server and channel names with glossy, glass effect */
-.channelName-2S1rOw, .guildName-3zU2dV, .categoryDefault-3d7XoX {
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+/* Labels like server names, category names with glassy, animated shimmer */
+.channelName-2S1rOw,
+.guildName-3zU2dV,
+.categoryDefault-3d7XoX {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
   padding: 4px 8px;
   border-radius: 8px;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   font-weight: 600;
   color: #fff;
-  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
 }
-.channelName-2S1rOw:hover, .guildName-3zU2dV:hover, .categoryDefault-3d7XoX:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+.channelName-2S1rOw:hover,
+.guildName-3zU2dV:hover,
+.categoryDefault-3d7XoX:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
 }
 
-/* Messages with a liquid, glossy, glass effect */
+/* Messages with layered glass distortion for realism */
 .message-2FBp4y {
   background-color: rgba(255,255,255,0.02);
   border-radius: 12px;
   padding: 10px 14px;
   margin-bottom: 8px;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  box-shadow: inset 0 0 8px rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s;
-}
-.message-2FBp4y:hover {
-  background-color: rgba(255,255,255,0.04);
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+  animation: flowMessage 30s infinite ease-in-out;
 }
 
-/* Inputs and buttons with glossy, liquid glass appearance */
-input[type="text"], input[type="search"], textarea, button {
+/* Animate message to simulate flowing liquid */
+@keyframes flowMessage {
+  0% {
+    backdrop-filter: blur(20px);
+  }
+  50% {
+    backdrop-filter: blur(25px) hue-rotate(5deg);
+  }
+  100% {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Inputs, buttons, textareas with ultra-glass, animated shimmer */
+input[type="text"],
+input[type="search"],
+textarea,
+button {
   background-color: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.2);
   border-radius: 20px;
@@ -92,6 +143,12 @@ input[type="text"], input[type="search"], textarea, button {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
 }
 input[type="text"]:focus,
 input[type="search"]:focus,
@@ -101,33 +158,48 @@ input[type="text"]:active,
 input[type="search"]:active,
 button:active,
 textarea:active {
-  box-shadow: 0 0 40px rgba(255,255,255,0.6),
+  box-shadow: 0 0 50px rgba(255,255,255,0.7),
               inset 0 0 20px rgba(255,255,255,0.3);
   border-color: rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.1);
   backdrop-filter: blur(20px);
 }
 
-/* Style for avatars and profile pictures with glass glow */
+/* Add flowing shimmer overlay for glass effect */
+input[type="text"]::before,
+input[type="search"]::before,
+textarea::before,
+button::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent, rgba(255,255,255,0.2));
+  background-size: 300% 100%;
+  animation: shimmer 4s linear infinite;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Glowing profile pictures and avatars */
 .avatar-3F3WWw {
-  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
   transition: box-shadow 0.3s;
 }
 .avatar-3F3WWw:hover {
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  box-shadow: 0 0 30px rgba(255,255,255,0.6);
 }
 
-/* Smooth glowing effect for server icons */
+/* Glowing server icons with smooth flow */
 .guildIcon-3X7u6C {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .guildIcon-3X7u6C:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-/* Text and username styling with soft glow */
+/* Text and username styling with subtle glow */
 .username-1A8OIy {
   font-weight: 600;
   color: #fff;
@@ -136,7 +208,7 @@ textarea:active {
   color: rgba(255,255,255,0.6);
 }
 
-/* Remove any movement or flickering effects */
+/* Avoid flickering or layout shift animations */
 @keyframes none {
   0%, 100% { transform: none; }
 }
