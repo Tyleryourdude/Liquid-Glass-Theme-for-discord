@@ -35,7 +35,7 @@ body,
   animation: flowBlue 30s infinite ease-in-out;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  border-radius: 20px;
+  border-radius: 30px; /* More rounded overall */
   border: 1px solid rgba(255,255,255,0.2);
   box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
   height: 100%;
@@ -57,7 +57,7 @@ body,
   );
   background-size: 400% 100%;
   animation: shimmerOverlay 40s infinite alternate;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
 #app-mount::after {
@@ -86,7 +86,6 @@ body,
   }
 }
 
-/* Overlay shimmer for flowing liquid glass effect */
 @keyframes shimmerOverlay {
   0% {
     transform: translate(0, 0);
@@ -96,12 +95,12 @@ body,
   }
 }
 
-/* Style sidebar, channels, categories with transparent shimmer and animated glow */
+/* Style sidebar, channels, categories with transparent shimmer and rounded borders */
 .guildsWrapper,
 .sidebar-2K8pF4,
 .channels-2XN2pA {
   background-color: rgba(255,255,255,0.02) !important;
-  border-radius: 12px;
+  border-radius: 30px; /* More rounded containers */
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
   backdrop-filter: blur(15px);
@@ -114,18 +113,17 @@ body,
   box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
 }
 
-/* Style labels (server names, categories) with shimmer and glowing hover effect */
+/* Labels like server names, categories with shimmer and more rounded corners */
 .channelName-2S1rOw,
 .guildName-3zU2dV,
 .categoryDefault-3d7XoX {
   background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
   padding: 4px 8px;
-  border-radius: 8px;
+  border-radius: 20px; /* More rounded labels */
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   font-weight: 600;
   color: #fff;
-  transition: all 0.3s;
 }
 .channelName-2S1rOw:hover,
 .guildName-3zU2dV:hover,
@@ -134,10 +132,10 @@ body,
   box-shadow: 0 0 15px rgba(255,255,255,0.4);
 }
 
-/* Style messages with flowing glass distortion and animated shimmer */
+/* Style messages with flowing glass distortion and rounded corners */
 .message-2FBp4y {
   background-color: rgba(255,255,255,0.02);
-  border-radius: 12px;
+  border-radius: 20px; /* More rounded message boxes */
   padding: 10px 14px;
   margin-bottom: 8px;
   backdrop-filter: blur(20px);
@@ -160,12 +158,12 @@ body,
   }
 }
 
-/* Style the message input box as liquid glass with shimmer animation */
+/* Style the message input container as rounded liquid glass with shimmer animation */
 .messageInputContainer {
   background: rgba(255,255,255,0.1) !important;
   border: 1px solid rgba(255,255,255,0.2) !important;
-  border-radius: 20px;
-  padding: 8px;
+  border-radius: 30px; /* More rounded input container */
+  padding: 12px;
   margin: 10px;
   position: relative;
   backdrop-filter: blur(20px);
@@ -183,7 +181,7 @@ body,
   animation: shimmerFlow 4s linear infinite;
 }
 
-/* Style the textarea (chat input) as transparent and flowy */
+/* Style the textarea (chat input) as transparent and flowy with rounded edges */
 .messageTextArea-2X4BIu {
   background: transparent !important;
   border: none !important;
@@ -193,6 +191,8 @@ body,
   width: 100% !important;
   height: 40px !important;
   resize: none;
+  border-radius: 20px; /* Rounded input field */
+  padding: 8px 12px;
 }
 
 /* Animate shimmer overlay for message input */
@@ -201,17 +201,18 @@ body,
   100% { background-position: 200% 0; }
 }
 
-/* Buttons glow brighter on hover/focus (including send button) */
+/* Buttons glow brighter on hover/focus with more rounded shape */
 button:hover,
 button:focus {
   box-shadow: 0 0 20px rgba(255,255,255,0.7),
               inset 0 0 10px rgba(255,255,255,0.4);
+  border-radius: 20px; /* Rounded buttons */
   border-color: rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.15);
   cursor: pointer;
 }
 
-/* Glowing avatars & server icons for immersive effect */
+/* Glowing avatars & server icons for immersive effect with more rounded shape */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
@@ -228,7 +229,7 @@ button:focus {
   box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-/* Text & timestamps with glow effect */
+/* Text & timestamp glow effects with rounded styling */
 .username-1A8OIy {
   font-weight: 600;
   color: #fff;
@@ -237,26 +238,10 @@ button:focus {
   color: rgba(255,255,255,0.6);
 }
 
-/* Additional animated glow for all hoverable/interactable elements */
+/* Additional animated glow for hoverable/interactable elements */
 a:hover,
 .interactive-1gCjV0:hover,
 button:hover,
 button:focus {
   box-shadow: 0 0 30px rgba(255,255,255,0.8);
-}
-
-/* Optional: Add flicker or shimmer effect for headers and labels for extra vibe */
-.header-1XyCr6, .title-1XyCr6 {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-  padding: 4px 8px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  font-weight: 600;
-  color: #fff;
-  animation: shimmerHeaders 5s infinite alternate;
-}
-
-@keyframes shimmerHeaders {
-  0% { background-position: 0 0; }
-  100% { background-position: 200% 0; }
 }
