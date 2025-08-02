@@ -1,80 +1,151 @@
-/* Set the entire body and all major containers to blue with transparency for glass effect */
+/* Set entire background to solid blue, full transparency for glass effect */
 body,
 #app-mount,
-.guildsWrapper,
-.sidebar-2K8pF4,
-.channels-2XN2pA,
-.content-2cRqcS,
-.message-2FBp4y,
-.header,
-.header-1XyCr6,
-.title-1XyCr6,
-.header-1XyCr6,
-.header-1XyCr6,
-.header-1XyCr6,
-/* Add more selectors as needed for specific parts of Discord UI */ 
-{
-  background-color: rgba(30, 144, 255, 0.15) !important; /* Blue transparent */
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+html {
+  background-color: #1e90ff !important; /* Bright blue background */
+  background-image: none !important;
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make all major containers transparent with flowing liquid glass effect */
+#app-mount {
+  background: rgba(30, 144, 255, 0.15);
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.2);
   box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  /* Animate for flowing liquid glass */
+  animation: flowLiquid 25s infinite ease-in-out;
   transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Create animated layered distortion for flowing liquid glass effect */
+@keyframes flowLiquid {
+  0% {
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
+  }
+  25% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
+  }
+  50% {
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(10deg);
+  }
+  75% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
+  }
+  100% {
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
+  }
+}
+
+/* Add layered overlays to simulate liquid distortion and shimmer for realism */
+#app-mount::before,
+#app-mount::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.2),
+    transparent,
+    rgba(255,255,255,0.2)
+  );
+  background-size: 400% 100%;
+  animation: shimmerOverlay 30s infinite alternate;
+  border-radius: 20px;
+}
+
+#app-mount::after {
+  background: linear-gradient(
+    225deg,
+    rgba(255,255,255,0.2),
+    transparent,
+    rgba(255,255,255,0.2)
+  );
+  animation-delay: 15s;
+}
+
+@keyframes shimmerOverlay {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(10px, -10px);
+  }
+}
+
+/* Style sidebar, channels, categories — transparent with animated flow */
+.guildsWrapper,
+.sidebar-2K8pF4,
+.channels-2XN2pA {
+  background-color: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  transition: all 0.3s;
+}
+.guildsWrapper:hover,
+.sidebar-2K8pF4:hover,
+.channels-2XN2pA:hover {
+  background-color: rgba(255,255,255,0.03);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* Labels (server names, categories) with glassy shimmer effect */
+.channelName-2S1rOw,
+.guildName-3zU2dV,
+.categoryDefault-3d7XoX {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  padding: 4px 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  font-weight: 600;
+  color: #fff;
   position: relative;
   overflow: hidden;
 }
-
-/* For all containers, add animated flowing distortion to simulate liquid movement */
-@keyframes flowBlue {
-  0% {
-    backdrop-filter: blur(25px);
-  }
-  50% {
-    backdrop-filter: blur(30px) hue-rotate(10deg);
-  }
-  100% {
-    backdrop-filter: blur(25px);
-  }
+.channelName-2S1rOw:hover,
+.guildName-3zU2dV:hover,
+.categoryDefault-3d7XoX:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
 }
 
-#app-mount {
-  animation: flowBlue 25s infinite ease-in-out;
-}
-
-/* Apply to all panels, headers, content areas, messages, etc. */
-.header,
-.title-1XyCr6,
-.header-1XyCr6,
-.message-2FBp4y,
-.content-2cRqcS,
-.channelName-2S1rOw,
-.guildName-3zU2dV,
-.categoryDefault-3d7XoX,
-/* Add other relevant classes for your Discord version */
-{
-  background-color: rgba(30, 144, 255, 0.15) !important;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
-  transition: all 0.3s ease;
-}
-
-/* Style chat bubbles/messages with transparent, liquid glass look */
+/* Chat messages with layered, flowing glass distortion (animated shimmer) */
 .message-2FBp4y {
-  background-color: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 15px;
+  background-color: rgba(255,255,255,0.02);
+  border-radius: 12px;
   padding: 10px 14px;
   margin-bottom: 8px;
-  transition: all 0.3s;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  animation: flowMessage 30s infinite ease-in-out;
 }
 
-/* Inputs, buttons, textareas with transparent glass and flow shimmer */
+@keyframes flowMessage {
+  0% {
+    backdrop-filter: blur(20px);
+  }
+  50% {
+    backdrop-filter: blur(25px) hue-rotate(5deg);
+  }
+  100% {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Inputs, buttons, textareas with transparent glass, shimmer overlay for flow */
 input[type="text"],
 input[type="search"],
 textarea,
@@ -113,7 +184,7 @@ textarea:active {
   backdrop-filter: blur(25px);
 }
 
-/* Add a shimmering overlay for glass flow effect */
+/* Add shimmering overlay for flowing glass shimmer effect */
 input[type="text"]::before,
 input[type="search"]::before,
 textarea::before,
@@ -128,12 +199,12 @@ button::before {
     rgba(255,255,255,0.2)
   );
   background-size: 400% 100%;
-  animation: shimmerFlow 3s linear infinite;
+  animation: shimmerFlow 4s linear infinite;
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* Style avatars with glowing glass effect */
+/* Profile pictures & avatars with glowing glass effect */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
@@ -143,7 +214,7 @@ button::before {
   box-shadow: 0 0 30px rgba(255,255,255,0.6);
 }
 
-/* Style server icons with flow glow */
+/* Server icons with flowing glow effect */
 .guildIcon-3X7u6C {
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -161,7 +232,7 @@ button::before {
   color: rgba(255,255,255,0.6);
 }
 
-/* Prevent flickering or shifting animations */
+/* Prevent flickering or layout shifts */
 @keyframes none {
   0%, 100% { transform: none; }
 }
