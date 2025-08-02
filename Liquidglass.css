@@ -1,14 +1,14 @@
-/* Make the entire Discord window transparent and remove default backgrounds */
+/* Set entire Discord background to blue */
 body,
 #app-mount,
 html {
-  background: transparent !important;
+  background: #1e90ff !important; /* Bright blue background */
   margin: 0 !important;
   padding: 0 !important;
   height: 100% !important;
 }
 
-/* Override all major background containers with transparent backgrounds for a clean look */
+/* Make all main containers transparent with white liquid glass overlay */
 #app-mount,
 body,
 .layerContainer,
@@ -24,49 +24,44 @@ body,
 .message,
 .embedWrapper-2wE1F1,
 .embed-3MeYJg,
-/* Add more classes if needed to cover all UI parts */
-{
+.header-1XyCr6,
+.categoryDefault-3d7XoX {
   background: transparent !important;
-  border-radius: 30px; /* Keep rounded for style */
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Animated flowing liquid glass overlay for the entire window */
-#app-mount {
-  animation: flowBlue 30s infinite ease-in-out;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: 30px;
   border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.3),
+              0 0 40px rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
 }
 
-/* Overlay layers for shimmer and distortion - flowing liquid look */
+/* Animate the main container with flowing, flowing liquid glass effect (white) */
+#app-mount {
+  background: linear-gradient(135deg, #ffffff, #e0e0e0);
+  background-size: 400% 400%;
+  animation: flowLiquid 35s infinite ease-in-out, hueShift 60s infinite linear;
+}
+
+/* Overlay layers for shimmer and layered distortion for liquid flow */
 #app-mount::before,
 #app-mount::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 30px;
   pointer-events: none;
+}
+#app-mount::before {
   background: linear-gradient(
     135deg,
     rgba(255,255,255,0.2),
     transparent,
     rgba(255,255,255,0.2)
   );
-  background-size: 400% 100%;
-  animation: shimmerOverlay 40s infinite alternate;
-  border-radius: 30px;
-  background: transparent !important;
-  box-shadow: none !important;
+  background-size: 600% 100%;
+  animation: shimmerFlow 45s infinite alternate;
 }
-
 #app-mount::after {
   background: linear-gradient(
     225deg,
@@ -74,128 +69,144 @@ body,
     transparent,
     rgba(255,255,255,0.2)
   );
-  animation-delay: 20s;
+  background-size: 600% 100%;
+  animation: shimmerFlow 50s infinite alternate 20s;
 }
 
-/* Animate background shift and hue rotation for dynamic flow */
-@keyframes flowBlue {
-  0% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    background-position: 100% 50%;
-    filter: hue-rotate(10deg);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: hue-rotate(0deg);
-  }
+/* Animate hue rotation for color shifting */
+@keyframes hueShift {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(360deg); }
+  100% { filter: hue-rotate(0deg); }
 }
 
-@keyframes shimmerOverlay {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(10px, -10px);
-  }
+/* Animate layered distortion overlay for flowing liquid */
+@keyframes shimmerFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
 }
 
-/* Make sidebar, channels, categories transparent with rounded borders */
+/* Style sidebar, channels, categories with transparent, white liquid glass, fully rounded */
 .guildsWrapper,
-.sidebar-2K8pF4,
+.sidebar-2K8pF,
 .channels-2XN2pA {
-  background: transparent !important;
+  background: rgba(255,255,255,0.02) !important;
   border-radius: 30px;
   border: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+.guildsWrapper:hover,
+.sidebar-2K8pF:hover,
+.channels-2XN2pA:hover {
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.1),
+              0 0 20px rgba(255,255,255,0.4);
 }
 
-/* Labels like server names, categories with shimmer and rounded corners, transparent background */
+/* Labels (server names, categories) with shimmer, glow, and full rounding */
 .channelName-2S1rOw,
 .guildName-3zU2dV,
 .categoryDefault-3d7XoX {
-  background: transparent !important;
-  padding: 4px 8px;
-  border-radius: 20px; /* Rounded labels */
-  backdrop-filter: none !important;
-  color: #fff;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  padding: 6px 12px;
+  border-radius: 50px;
   font-weight: 600;
-  box-shadow: none !important;
+  color: #fff;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+}
+.channelName-2S1rOw:hover,
+.guildName-3zU2dV:hover,
+.categoryDefault-3d7XoX:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
-/* Style messages with transparent background and flowing glass effect */
+/* Message boxes with white liquid glass, rounded, flowing effect */
 .message-2FBp4y {
-  background: transparent !important;
-  border-radius: 20px; /* Rounded message boxes */
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  backdrop-filter: none !important;
+  background: rgba(255,255,255,0.02);
+  border-radius: 50px;
+  padding: 14px 20px;
+  margin-bottom: 10px;
   border: none !important;
-  box-shadow: none !important;
-  border: none;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.07);
+  backdrop-filter: blur(30px);
+  transition: all 0.3s ease;
+  animation: flowMessage 35s infinite ease-in-out;
+}
+@keyframes flowMessage {
+  0% { backdrop-filter: blur(30px); }
+  50% { backdrop-filter: blur(35px) hue-rotate(10deg); }
+  100% { backdrop-filter: blur(30px); }
 }
 
-/* Style the message input container as rounded and transparent with shimmer animation */
+/* Style the message input bar as very rounded, transparent, with white liquid glass shimmer */
 .messageInputContainer {
-  background: transparent !important;
+  background: rgba(255,255,255,0.1);
   border: none !important;
-  border-radius: 40px; /* More rounded input container */
-  padding: 12px;
-  margin: 10px;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
+  border-radius: 50px;
+  padding: 14px;
+  margin: 12px 10px;
+  backdrop-filter: blur(30px);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
   background-image: linear-gradient(
     135deg,
     rgba(255,255,255,0.2),
     transparent,
     rgba(255,255,255,0.2)
   );
-  background-size: 400% 100%;
+  background-size: 600% 100%;
   animation: shimmerFlow 4s linear infinite;
 }
 
-/* Style the textarea as transparent and rounded */
+/* Style the chat textarea with transparent flowing liquid glass, rounded */
 .messageTextArea-2X4BIu {
   background: transparent !important;
   border: none !important;
   outline: none !important;
-  color: #fff !important;
+  color: #fff;
   font-size: 14px;
-  width: 100% !important;
-  height: 40px !important;
+  width: 100%;
+  height: 40px;
   resize: none;
-  border-radius: 20px; /* Rounded input field */
+  border-radius: 50px;
   padding: 8px 12px;
 }
 
-/* Animate shimmer overlay for the message input background */
+/* Animate shimmer overlay for input */
 @keyframes shimmerFlow {
   0% { background-position: 0 0; }
   100% { background-position: 200% 0; }
 }
 
-/* Buttons with glow and rounded shape on hover/focus */
+/* Style buttons as very rounded, glowing on hover/focus */
+button {
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none !important;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 button:hover,
 button:focus {
-  box-shadow: 0 0 20px rgba(255,255,255,0.7),
+  box-shadow: 0 0 20px rgba(255,255,255,0.8),
               inset 0 0 10px rgba(255,255,255,0.4);
-  border-radius: 20px;
-  border-color: rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.15);
-  cursor: pointer;
 }
 
-/* Glowing avatars & server icons with rounded shape */
+/* Glowing avatars and icons with white liquid glow, rounded, animated glow */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
   transition: box-shadow 0.3s;
 }
 .avatar-3F3WWw:hover {
-  box-shadow: 0 0 30px rgba(255,255,255,0.6);
+  box-shadow: 0 0 30px rgba(255,255,255,0.7);
 }
 .guildIcon-3X7u6C {
   transition: transform 0.3s, box-shadow 0.3s;
@@ -205,7 +216,7 @@ button:focus {
   box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-/* Text & timestamp glow effects with rounded styling */
+/* Glowing text and timestamp with rounded, white glow */
 .username-1A8OIy {
   font-weight: 600;
   color: #fff;
@@ -214,7 +225,7 @@ button:focus {
   color: rgba(255,255,255,0.6);
 }
 
-/* Additional animated glow for hoverable/interactable elements */
+/* Additional hover glow for all interactive elements */
 a:hover,
 .interactive-1gCjV0:hover,
 button:hover,
