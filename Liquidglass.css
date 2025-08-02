@@ -1,15 +1,25 @@
-/* Set the entire background to a vibrant blue for all parts */
+/* Make the entire Discord background blue and transparent */
 body,
 #app-mount,
 html {
-  background-color: #1e90ff !important; /* Bright blue background */
+  background-color: #1e90ff !important; /* Your blue background */
+  background-image: none !important;
+  background: transparent !important; /* Remove native backgrounds */
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
-/* Main container with animated flowing liquid glass effect */
+/* Override Discord's internal backgrounds to match your theme */
+._2nLc6, /* Main app container */
+._2nLc6 * {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Main container with animated liquid glass overlay */
 #app-mount {
-  background: rgba(30, 144, 255, 0.15);
+  background: rgba(30, 144, 255, 0.15)!important;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.2);
   box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
@@ -19,28 +29,10 @@ html {
   transition: all 0.3s ease;
   overflow: hidden;
   position: relative;
+  height: 100%;
 }
 
-/* Animate layered distortion for flowing effect */
-@keyframes flowLiquid {
-  0% {
-    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
-  }
-  25% {
-    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
-  }
-  50% {
-    backdrop-filter: blur(30px) contrast(1) hue-rotate(10deg);
-  }
-  75% {
-    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
-  }
-  100% {
-    backdrop-filter: blur(30px) contrast(1);
-  }
-}
-
-/* Overlay layers for shimmer and liquid distortion */
+/* Layered overlay for shimmer and distortions */
 #app-mount::before,
 #app-mount::after {
   content: "";
@@ -68,20 +60,29 @@ html {
   animation-delay: 20s;
 }
 
-@keyframes shimmerOverlay {
+@keyframes flowLiquid {
   0% {
-    transform: translate(0, 0);
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(0deg);
+  }
+  25% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
+  }
+  50% {
+    backdrop-filter: blur(30px) contrast(1) hue-rotate(10deg);
+  }
+  75% {
+    backdrop-filter: blur(35px) contrast(1.1) hue-rotate(5deg);
   }
   100% {
-    transform: translate(10px, -10px);
+    backdrop-filter: blur(30px) contrast(1);
   }
 }
 
-/* Style sidebar, channels, categories with transparent, animated flow */
+/* Override backgrounds of sidebar, channels, categories */
 .guildsWrapper,
 .sidebar-2K8pF4,
 .channels-2XN2pA {
-  background-color: rgba(255,255,255,0.02);
+  background-color: rgba(255,255,255,0.02) !important;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
@@ -91,11 +92,11 @@ html {
 .guildsWrapper:hover,
 .sidebar-2K8pF4:hover,
 .channels-2XN2pA:hover {
-  background-color: rgba(255,255,255,0.03);
+  background-color: rgba(255,255,255,0.03) !important;
   box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
 }
 
-/* Labels (server names, categories) with shimmering glass effect */
+/* Labels like server and category names with shimmer effect */
 .channelName-2S1rOw,
 .guildName-3zU2dV,
 .categoryDefault-3d7XoX {
@@ -113,7 +114,7 @@ html {
   background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
 }
 
-/* Chat messages with layered, flowing glass distortion */
+/* Messages with layered flowing glass distortion */
 .message-2FBp4y {
   background-color: rgba(255,255,255,0.02);
   border-radius: 12px;
@@ -127,7 +128,6 @@ html {
   overflow: hidden;
   animation: flowMessage 30s infinite ease-in-out;
 }
-
 @keyframes flowMessage {
   0% {
     backdrop-filter: blur(20px);
@@ -140,7 +140,7 @@ html {
   }
 }
 
-/* Inputs, buttons, textareas with shimmer and glow for glass effect */
+/* Inputs, buttons, textareas with shimmer effect and glow */
 input[type="text"],
 input[type="search"],
 textarea,
@@ -158,13 +158,10 @@ button {
   overflow: hidden;
   transition: all 0.3s ease;
 }
-
-/* Shimmer overlay for flowing glass shimmer effect on inputs/buttons */
 @keyframes shimmerFlow {
   0% { background-position: 0 0; }
   100% { background-position: 200% 0; }
 }
-
 input[type="text"]::before,
 input[type="search"]::before,
 textarea::before,
@@ -184,7 +181,7 @@ button::before {
   pointer-events: none;
 }
 
-/* Light-up glow effect for all buttons in settings and interactive elements */
+/* Buttons and interactive elements glow when hovered/focused */
 button:hover,
 button:focus {
   box-shadow: 0 0 20px rgba(255,255,255,0.7),
@@ -192,8 +189,6 @@ button:focus {
   border-color: rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.15);
 }
-
-/* Additional glow for all hoverable/interactable elements */
 a:hover,
 .interactive-1gCjV0:hover,
 button:hover,
@@ -201,7 +196,7 @@ button:focus {
   box-shadow: 0 0 30px rgba(255,255,255,0.8);
 }
 
-/* Glowing avatars & server icons for immersive effect */
+/* Glowing avatars & server icons for immersion */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
@@ -210,7 +205,6 @@ button:focus {
 .avatar-3F3WWw:hover {
   box-shadow: 0 0 30px rgba(255,255,255,0.6);
 }
-
 .guildIcon-3X7u6C {
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -219,7 +213,7 @@ button:focus {
   box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-/* Text styles with soft, glowing effect */
+/* Text & timestamps with glow */
 .username-1A8OIy {
   font-weight: 600;
   color: #fff;
@@ -228,7 +222,7 @@ button:focus {
   color: rgba(255,255,255,0.6);
 }
 
-/* Prevent flickering or layout shifts with animation resets */
+/* Prevent flickering or shifts */
 @keyframes none {
   0%, 100% { transform: none; }
 }
