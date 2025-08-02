@@ -1,4 +1,4 @@
-/* Reset and base setup for full coverage and transparency */
+/* Make the entire Discord window have a blue animated liquid glass background */
 body,
 #app-mount,
 html {
@@ -6,54 +6,43 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   height: 100% !important;
-  font-family: 'Arial', sans-serif !important;
-  overflow: hidden !important;
 }
 
-/* Container overlays with animated flowing blue liquid glass + particles */
-#app-mount,
-body,
-.layerContainer,
-.content,
-.guildsWrapper,
-.sidebar-2K8pF4,
-.channels-2XN2pA,
-.header-1XyCr6,
-.messages,
-.scrollbar-2YPPpF,
-.inner-2YPPpF,
-.message,
-.embedWrapper-2wE1F1,
+/* Cover all major UI containers with animated blue liquid glass overlay for a seamless effect */
+#app-mount, 
+body, 
+.layerContainer, 
+.content, 
+.guildsWrapper, 
+.sidebar-2K8pF4, 
+.channels-2XN2pA, 
+.header-1XyCr6, 
+.title-1XyCr6, 
+.messages, 
+.scroller-2YPPpF, 
+.inner-2YPPpF, 
+.message, 
+.embedWrapper-2wE1F1, 
 .embed-3MeYJg {
   background: linear-gradient(135deg, #1e90ff, #0066cc);
   background-size: 400% 400%;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+}
+
+/* Animate the main container with flowing, liquid glass effect */
+#app-mount {
+  animation: flowBlue 30s infinite ease-in-out;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: 20px;
-  border: 2px solid rgba(255,255,255,0.2);
-  box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 0 70px rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 50px rgba(255,255,255,0.3);
+  height: 100%;
+  width: 100%;
 }
 
-/* Animate background with hue rotation for color shifting - REMOVE this to keep colors static */
-/* @keyframes hueRotate {
-  from { filter: hue-rotate(0deg); }
-  to { filter: hue-rotate(360deg); }
-}
-#app-mount {
-  animation: flowBlue 50s infinite linear, hueRotate 60s infinite linear;
-} */
-
-/* Animate the flowing blue background without hue shift */
-@keyframes flowBlue {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Overlay layers with animated shimmer for depth */
+/* Overlay layers for shimmer and liquid distortion for a flowing look */
 #app-mount::before,
 #app-mount::after {
   content: "";
@@ -67,110 +56,123 @@ body,
     rgba(255,255,255,0.2)
   );
   background-size: 400% 100%;
-  animation: shimmerOverlay 60s infinite alternate;
+  animation: shimmerOverlay 40s infinite alternate;
   border-radius: 20px;
 }
-@keyframes shimmerOverlay {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(20px, -20px); }
-}
 
-/* Floating particles overlay for depth (simulate starfield/particles) */
 #app-mount::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: particlesFlow 80s linear infinite;
-  pointer-events: none;
-}
-@keyframes particlesFlow {
-  from { background-position: 0 0; }
-  to { background-position: 100px 100px; }
+  background: linear-gradient(
+    225deg,
+    rgba(255,255,255,0.2),
+    transparent,
+    rgba(255,255,255,0.2)
+  );
+  animation-delay: 20s;
 }
 
-/* Pulsating, glowing borders for headers, panels, etc. */
-@keyframes pulseBorder {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(0,255,255,0.5);
+/* Animate background shift and hue rotation for dynamic effect */
+@keyframes flowBlue {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
   }
   50% {
-    box-shadow: 0 0 20px rgba(0,255,255,1);
+    background-position: 100% 50%;
+    filter: hue-rotate(10deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
   }
 }
-.glow-border {
-  animation: pulseBorder 3s infinite;
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #fff, #0ff, #fff) 1;
-  box-shadow: 0 0 15px rgba(0,255,255,0.6);
+
+/* Overlay shimmer for flowing liquid glass effect */
+@keyframes shimmerOverlay {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(10px, -10px);
+  }
 }
 
-/* Glowing, animated headers, labels, categories */
+/* Style sidebar, channels, categories with transparent shimmer and animated glow */
+.guildsWrapper,
+.sidebar-2K8pF4,
+.channels-2XN2pA {
+  background-color: rgba(255,255,255,0.02) !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  transition: all 0.3s;
+}
+.guildsWrapper:hover,
+.sidebar-2K8pF4:hover,
+.channels-2XN2pA:hover {
+  background-color: rgba(255,255,255,0.03) !important;
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.1);
+}
+
+/* Style labels (server names, categories) with shimmer and glowing hover effect */
 .channelName-2S1rOw,
 .guildName-3zU2dV,
-.categoryDefault-3d7XoX,
-.header-1XyCr6,
-.title-1XyCr6 {
+.categoryDefault-3d7XoX {
   background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
   padding: 4px 8px;
   border-radius: 8px;
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #fff, #0ff, #fff) 1;
-  box-shadow: 0 0 15px rgba(0,255,255,0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   font-weight: 600;
   color: #fff;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
-.header-1XyCr6:hover,
-.title-1XyCr6:hover {
-  box-shadow: 0 0 30px rgba(0,255,255,1);
-}
-
-/* Pulsating glow on icons and buttons for interactivity */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255,255,255,1);
-  }
-}
-.glow-pulse {
-  animation: pulseGlow 2.5s infinite;
+.channelName-2S1rOw:hover,
+.guildName-3zU2dV:hover,
+.categoryDefault-3d7XoX:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
 }
 
-/* Style messages with flowing, shimmering, layered glass distortion */
+/* Style messages with flowing glass distortion and animated shimmer */
 .message-2FBp4y {
-  background: rgba(255,255,255,0.02);
+  background-color: rgba(255,255,255,0.02);
   border-radius: 12px;
   padding: 10px 14px;
   margin-bottom: 8px;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: inset 0 0 12px rgba(255,255,255,0.1);
   position: relative;
   overflow: hidden;
-  animation: flowMessage 60s infinite ease-in-out;
+  animation: flowMessage 30s infinite ease-in-out;
 }
 @keyframes flowMessage {
-  0% { backdrop-filter: blur(20px); }
-  50% { backdrop-filter: blur(25px) hue-rotate(5deg); }
-  100% { backdrop-filter: blur(20px); }
+  0% {
+    backdrop-filter: blur(20px);
+  }
+  50% {
+    backdrop-filter: blur(25px) hue-rotate(5deg);
+  }
+  100% {
+    backdrop-filter: blur(20px);
+  }
 }
 
-/* Style message bubbles as liquid glass with shimmer */
-.messageTextArea-2X4BIu {
-  background: rgba(255,255,255,0.1);
+/* Style the message input box as liquid glass with shimmer animation */
+.messageInputContainer {
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
   border-radius: 20px;
-  border: none;
-  outline: none;
-  padding: 8px 12px;
-  width: 100%;
-  height: 40px;
-  font-size: 14px;
-  color: #fff;
+  padding: 8px;
+  margin: 10px;
+  position: relative;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  /* shimmer overlay for flowing effect */
   background-image: linear-gradient(
     135deg,
     rgba(255,255,255,0.2),
@@ -179,10 +181,37 @@ body,
   );
   background-size: 400% 100%;
   animation: shimmerFlow 4s linear infinite;
-  transition: all 0.3s ease;
 }
 
-/* Floating glow effect on avatars and server icons for immersion */
+/* Style the textarea (chat input) as transparent and flowy */
+.messageTextArea-2X4BIu {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #fff !important;
+  font-size: 14px;
+  width: 100% !important;
+  height: 40px !important;
+  resize: none;
+}
+
+/* Animate shimmer overlay for message input */
+@keyframes shimmerFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Buttons glow brighter on hover/focus (including send button) */
+button:hover,
+button:focus {
+  box-shadow: 0 0 20px rgba(255,255,255,0.7),
+              inset 0 0 10px rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.4);
+  background-color: rgba(255,255,255,0.15);
+  cursor: pointer;
+}
+
+/* Glowing avatars & server icons for immersive effect */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
@@ -199,7 +228,7 @@ body,
   box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
-/* Enhance glow & pulsate on usernames, timestamps, icons for liveliness */
+/* Text & timestamps with glow effect */
 .username-1A8OIy {
   font-weight: 600;
   color: #fff;
@@ -207,132 +236,27 @@ body,
 .timestamp-3ZtG9d {
   color: rgba(255,255,255,0.6);
 }
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255,255,255,1);
-  }
-}
-.pulse-glow {
-  animation: pulse 2s infinite;
-}
 
-/* Animate glow borders on hover for buttons & panels */
-@keyframes glowBorder {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(0,255,255,0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(0,255,255,1);
-  }
-}
-.glow-border-hover {
-  animation: glowBorder 3s infinite alternate;
-}
-
-/* Advanced hover and focus effects for buttons, icons, menu items */
+/* Additional animated glow for all hoverable/interactable elements */
+a:hover,
+.interactive-1gCjV0:hover,
 button:hover,
-button:focus,
-.interactive-elem:hover,
-.interactive-elem:focus {
-  box-shadow: 0 0 30px rgba(0,255,255,0.8);
-  border-color: rgba(0,255,255,0.4);
-  background-color: rgba(255,255,255,0.15);
-  transform: scale(1.02);
-  transition: all 0.3s ease;
+button:focus {
+  box-shadow: 0 0 30px rgba(255,255,255,0.8);
 }
 
-/* Headers and panels with animated borders for extra depth */
+/* Optional: Add flicker or shimmer effect for headers and labels for extra vibe */
 .header-1XyCr6, .title-1XyCr6 {
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #fff, #0ff, #fff) 1;
-  box-shadow: 0 0 15px rgba(0,255,255,0.6);
-  animation: pulseBorder 4s infinite alternate;
-}
-@keyframes pulseBorder {
-  0% { box-shadow: 0 0 10px rgba(0,255,255,0.5); }
-  100% { box-shadow: 0 0 20px rgba(0,255,255,1); }
-}
-
-/* Floating, pulsating icons for extra liveliness */
-@keyframes floatPulse {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-.floatingPulse {
-  animation: floatPulse 2s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  padding: 4px 8px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  color: #fff;
+  animation: shimmerHeaders 5s infinite alternate;
 }
 
-/* Animated gradient overlays for extra style */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-.gradient-shift {
-  background: linear-gradient(270deg, #0ff, #f0f, #ff0, #0ff);
-  background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
-}
-
-/* Glowing highlight for critical UI elements */
-.critical-glow {
-  box-shadow: 0 0 25px rgba(255,255,255,0.8);
-  animation: pulse 2s infinite;
-}
-
-/* Custom scrollbar with glow effects for aesthetic scrolling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #0ff, #f0f);
-  border-radius: 4px;
-  box-shadow: inset 0 0 5px rgba(255,255,255,0.3);
-}
-::-webkit-scrollbar-thumb:hover {
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
-}
-
-/* Animate profile picture glow for immersion */
-.avatar-3F3WWw {
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-.avatar-3F3WWw:hover {
-  box-shadow: 0 0 40px rgba(255,255,255,0.8);
-  transform: scale(1.02);
-}
-
-/* Pulsate icons for extra liveliness */
-.pulseIcon {
-  animation: pulse 2s infinite;
-}
-
-/* Add animated sparkles or shimmer overlays on specific elements for extra effect */
-@keyframes sparkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-.sparkle {
-  animation: sparkle 1.5s infinite;
-  opacity: 1;
-}
-
-/* Extra: animated floating particles for depth (requires external plugin for true particles) */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: particlesFlowAnim 100s linear infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-@keyframes particlesFlowAnim {
-  from { background-position: 0 0; }
-  to { background-position: 100px 100px; }
+@keyframes shimmerHeaders {
+  0% { background-position: 0 0; }
+  100% { background-position: 200% 0; }
 }
