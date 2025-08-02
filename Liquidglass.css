@@ -37,14 +37,16 @@ body,
   box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 0 70px rgba(255,255,255,0.4);
 }
 
-/* Animate background with hue rotation for color shifting */
-@keyframes hueRotate {
+/* Animate background with hue rotation for color shifting - REMOVE this to keep colors static */
+/* @keyframes hueRotate {
   from { filter: hue-rotate(0deg); }
   to { filter: hue-rotate(360deg); }
 }
 #app-mount {
   animation: flowBlue 50s infinite linear, hueRotate 60s infinite linear;
-}
+} */
+
+/* Animate the flowing blue background without hue shift */
 @keyframes flowBlue {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -73,7 +75,7 @@ body,
   100% { transform: translate(20px, -20px); }
 }
 
-/* Floating particles overlay for extra depth (simulate starfield/particles) */
+/* Floating particles overlay for depth (simulate starfield/particles) */
 #app-mount::after {
   content: "";
   position: absolute;
@@ -101,7 +103,7 @@ body,
   animation: pulseBorder 3s infinite;
   border: 2px solid transparent;
   border-image: linear-gradient(45deg, #fff, #0ff, #fff) 1;
-  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+  box-shadow: 0 0 15px rgba(0,255,255,0.6);
 }
 
 /* Glowing, animated headers, labels, categories */
@@ -125,7 +127,7 @@ body,
   box-shadow: 0 0 30px rgba(0,255,255,1);
 }
 
-/* Pulsating glow on key icons and buttons for interactivity */
+/* Pulsating glow on icons and buttons for interactivity */
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: 0 0 10px rgba(255,255,255,0.5);
@@ -242,11 +244,11 @@ button:focus,
   transition: all 0.3s ease;
 }
 
-/* Add animated border glow to headers and panels for extra depth */
+/* Headers and panels with animated borders for extra depth */
 .header-1XyCr6, .title-1XyCr6 {
   border: 2px solid transparent;
   border-image: linear-gradient(45deg, #fff, #0ff, #fff) 1;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0,255,255,0.6);
   animation: pulseBorder 4s infinite alternate;
 }
 @keyframes pulseBorder {
@@ -254,7 +256,7 @@ button:focus,
   100% { box-shadow: 0 0 20px rgba(0,255,255,1); }
 }
 
-/* Additional floating, pulsating effects on specific icons or buttons */
+/* Floating, pulsating icons for extra liveliness */
 @keyframes floatPulse {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
@@ -263,7 +265,7 @@ button:focus,
   animation: floatPulse 2s ease-in-out infinite;
 }
 
-/* Extra: subtle animated gradient overlays for buttons/icons for extra style */
+/* Animated gradient overlays for extra style */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -274,7 +276,7 @@ button:focus,
   animation: gradientShift 15s ease infinite;
 }
 
-/* Apply glow and pulse to critical UI elements for high impact */
+/* Glowing highlight for critical UI elements */
 .critical-glow {
   box-shadow: 0 0 25px rgba(255,255,255,0.8);
   animation: pulse 2s infinite;
@@ -293,7 +295,7 @@ button:focus,
   box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
 }
 
-/* Animate the profile picture glow glow-glow effect */
+/* Animate profile picture glow for immersion */
 .avatar-3F3WWw {
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
   border-radius: 50%;
@@ -304,7 +306,7 @@ button:focus,
   transform: scale(1.02);
 }
 
-/* Make all icons, avatars pulsate for extra liveliness */
+/* Pulsate icons for extra liveliness */
 .pulseIcon {
   animation: pulse 2s infinite;
 }
@@ -319,7 +321,7 @@ button:focus,
   opacity: 1;
 }
 
-/* Extra: animated floating particles for immersive depth (requires external plugin for true particles) */
+/* Extra: animated floating particles for depth (requires external plugin for true particles) */
 body::after {
   content: "";
   position: fixed;
